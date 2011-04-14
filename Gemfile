@@ -5,7 +5,7 @@ gem 'sqlite3'
 
 group :development, :test do
   gem 'rspec-rails'
-  gem 'capybara'
+  gem 'capybara', :git => 'https://github.com/jnicklas/capybara.git'
   gem 'autotest'
   gem 'ZenTest'
 end
