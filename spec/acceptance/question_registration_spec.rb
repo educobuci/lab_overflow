@@ -11,5 +11,11 @@ feature "question resgistration" do
     end
     click_link_or_button 'Post your Question'
     page.should have_content 'Success'
-  end  
+  end
+  scenario "registration with error" do
+    visit '/'
+    click_link 'Ask Question'
+    click_link_or_button 'Post your Question'
+    page.should have_content 'error'
+  end
 end

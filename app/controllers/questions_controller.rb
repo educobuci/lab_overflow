@@ -8,7 +8,10 @@ class QuestionsController < ApplicationController
   
   def create
     @question = Question.new(params[:question])
-    flash[:notice] = "Success" if @question.save!
-    redirect_to root_url
+    respond_with @question do |format|
+      if @question.save
+        format.html { redirect_to root_url, :notice => "Success" }
+      end
+    end    
   end
 end
