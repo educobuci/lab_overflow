@@ -2,7 +2,7 @@ require 'spec_helper'
 require 'capybara/rspec'
 
 feature "question resgistration" do
-  scenario "regular resgistration" do
+  scenario "regular" do
     visit '/'
     click_link 'Ask Question'
     within '#new_question' do
@@ -12,10 +12,15 @@ feature "question resgistration" do
     click_link_or_button 'Post your Question'
     page.should have_content 'Success'
   end
-  scenario "registration with error" do
+  scenario "error" do
     visit '/'
     click_link 'Ask Question'
     click_link_or_button 'Post your Question'
     page.should have_content 'error'
+  end
+  scenario "unlogged" do
+    visit '/'
+    click_link 'Ask Question'
+    page.driver.current_url.should include "users/sign_in"
   end
 end
