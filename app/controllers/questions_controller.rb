@@ -1,5 +1,6 @@
 class QuestionsController < ApplicationController
   respond_to :html
+  before_filter :auth, :only => [:new, :create]
   
   def new
     @question = Question.new
@@ -14,4 +15,11 @@ class QuestionsController < ApplicationController
       end
     end    
   end
+  
+  private
+  def auth
+    unless user_signed_in?
+      redirect_to new_user_session_path
+    end
+  end  
 end

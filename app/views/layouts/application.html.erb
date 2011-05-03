@@ -11,6 +11,9 @@
     <%= flash[:notice] %>
     <%= flash[:alert] %>
   </div>
+  <div id="menu">
+    <%= link_to 'Sign In', new_user_session_path %>
+  </div>
 
 <%= yield %>
 
