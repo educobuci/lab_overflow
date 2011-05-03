@@ -1,6 +1,11 @@
 class QuestionsController < ApplicationController
   respond_to :html
   before_filter :auth, :only => [:new, :create]
+
+  def show
+    @question = Question.find(params[:id])  
+    respond_with @question
+  end    
   
   def new
     @question = Question.new
