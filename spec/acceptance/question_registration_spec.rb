@@ -13,6 +13,7 @@ feature "question resgistration" do
     end
     click_link_or_button 'Post your Question'
     page.should have_content 'Success'
+    page.should have_content @user.name
   end
   scenario "error" do
     @user = User.create(:name => "Bob Marley", :email => "bob@example.com", :password => "123456")

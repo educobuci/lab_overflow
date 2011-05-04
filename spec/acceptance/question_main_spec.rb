@@ -3,7 +3,8 @@ require 'capybara/rspec'
 
 feature "question main" do
   before do
-    @q = Question.new(:title => 'My question', :text => 'This is the question test!')
+    @user = Factory(:user)
+    @q = Question.new(:title => 'My question', :text => 'This is the question test!', :user => @user )
     @q.save
   end  
   

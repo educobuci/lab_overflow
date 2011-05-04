@@ -4,8 +4,11 @@
 <br />
 <br />
 <% @questions.each do |q| %>
-  <%= link_to q.title, question_path(q) %>
+  <%= link_to q.title, question_path(q) %>  
   <br />
   <%= q.text %>
+  <br />
+  <b>by <%= q.user.name%></b>
+  <br />
   <br />
 <% end %>
