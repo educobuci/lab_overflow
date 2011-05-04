@@ -4,13 +4,18 @@
   <title>LabOverflow</title>
   <%= stylesheet_link_tag :all %>
   <%= javascript_include_tag :defaults %>
+  <%= javascript_include_tag "jquery-ui" %>
   <%= csrf_meta_tag %>
 </head>
 <body>
   <div id="structure">
     <div id="flash">
-      <%= flash[:notice] %>
-      <%= flash[:alert] %>
+      <% if flash[:notice] %>
+        <div id="notice"><%= flash[:notice] %></div>
+      <% end %>
+      <% if flash[:alert] %>
+        <div id="alert"><%= flash[:alert] %></div>
+      <% end %>
     </div>
     <div id="header">
       <a href="/"><h1>LabOverflow</h1></a>

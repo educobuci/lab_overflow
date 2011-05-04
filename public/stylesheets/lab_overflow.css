@@ -22,16 +22,50 @@ h1
 }
 
 /**********************************************************
+/* Flash
+/*********************************************************/
+#flash
+{
+  position:absolute;
+  width:1000px;
+  text-align:center;
+}
+#notice
+{
+  display:inline;
+  padding:5px 10px;
+  background:#E0FFE0;
+  color:#00BB00;
+  border:solid 1px #00BB00;
+}
+#alert
+{
+  display:inline;
+  padding:5px 10px;
+  background:#FFE0E0;
+  color:#BB0000;
+  border:solid 1px #BB0000;
+}
+/**********************************************************
 /* Form Commons
 /*********************************************************/
 input[type="text"], input[type="password"], input[type="email"], textarea
 {
   border:solid 1px silver;
+  padding:3px 5px;
 }
 
-dt { float:left; margin-right:10px; }
-dt, dd { margin-bottom:10px }
+dt { float:left; width:80px; margin-top:5px; }
+dt, dd { margin-bottom:10px; }
 textarea { width:100%; }
+
+div.form_buttons { margin:10px 0px; }
+div.form_buttons input
+{
+  padding:5px 8px;
+  color:white;
+  background:#4775FF;
+}
 
 /**********************************************************
 /* UserMenu
@@ -66,7 +100,7 @@ textarea { width:100%; }
   padding:5px 8px;
   background:#606060;
   color:white;
-  margin-top:-50px
+  margin-top:-44px;
 }
 div.question
 {
