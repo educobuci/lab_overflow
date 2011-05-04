@@ -20,7 +20,7 @@ feature "question main" do
     page.should have_content 'My question'
     page.should have_content 'This is the question test!'  
     click_link 'Back'
-    page.should have_content 'LabOverFlow'
+    page.should have_content 'Questions'
   end
 
 end

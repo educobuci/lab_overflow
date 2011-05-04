@@ -1,11 +1,10 @@
-<h1>LabOverFlow</h1>
-
-<%= link_to 'Ask Question', new_question_path %>
-<br />
-<br />
-<% @questions.each do |q| %>
-  <%= link_to q.title, question_path(q) %>
-  <br />
-  <%= q.text %>
-  <br />
-<% end %>
+<h2>Questions</h2>
+<div id="questions">
+  <%= link_to 'Ask Question', new_question_path, :class => 'ask'  %>
+  
+  <% @questions.each do |q| %>
+  <div class="question">
+    <%= link_to q.title, question_path(q) %>
+  </div>
+  <% end %>
+</div>
