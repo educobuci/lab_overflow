@@ -1,0 +1,15 @@
+<% if user_signed_in? %>
+  <div id="user_avatar">
+    <%= image_tag current_user.gravatar %>
+  </div>
+  <div id="user_menu">
+    <span><%= current_user.name %></span>
+    <ul>
+      <li><%= link_to 'sign out', destroy_user_session_path %></li> | 
+      <li><%= link_to 'edit profile', edit_user_registration_path %></li>
+    </ul>
+  </div>
+<% else %>
+  <%= link_to 'sign up', new_user_registration_path %> | 
+  <%= link_to 'sign in', new_user_session_path %>
+<% end %>

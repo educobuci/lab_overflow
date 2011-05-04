@@ -13,10 +13,10 @@
       <%= flash[:alert] %>
     </div>
     <div id="header">
-      <h1>LabOverflow</h1>
+      <a href="/"><h1>LabOverflow</h1></a>
     </div>
     <div id="menu">
-      <%= link_to 'Sign In', new_user_session_path %>
+      <%= render :partial => 'shared/user_menu' %>
     </div>
     <div id="content">
       <%= yield %>

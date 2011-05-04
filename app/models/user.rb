@@ -1,3 +1,5 @@
+require 'digest/md5'
+
 class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
@@ -6,4 +8,11 @@ class User < ActiveRecord::Base
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me, :name
+  
+  has_many :questions
+  
+  def gravatar    
+    hash = Digest::MD5.hexdigest(self.email)
+    "http://www.gravatar.com/avatar/#{hash}?s=40"
+  end
 end

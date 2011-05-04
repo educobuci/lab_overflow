@@ -6,8 +6,9 @@ body { margin:10px; font-family: Trebuchet MS, Arial }
   width:1000px;
   margin:auto;
 }
-h2 { font-size:25px; } 
-a { text-decoration:none; }
+h2 { font-size:25px; margin-bottom:15px; } 
+a { text-decoration:none; color:#4775FF; }
+a:hover { text-decoration:underline; }
 
 /**********************************************************
 /* Header
@@ -21,23 +22,39 @@ h1
 }
 
 /**********************************************************
+/* Form Commons
+/*********************************************************/
+input[type="text"], input[type="password"], input[type="email"], textarea
+{
+  border:solid 1px silver;
+}
+
+dt { float:left; margin-right:10px; }
+dt, dd { margin-bottom:10px }
+textarea { width:100%; }
+
+/**********************************************************
 /* UserMenu
 /*********************************************************/
 #menu
 {
   float:right;
-  margin-top:-67px;
-  background:#F0F0F0;
-  width:200px;
+  margin-top:-60px;
+  width:210px;
   height:67px;
 }
-
+#menu ul li { list-style: none; display:inline; }
 /**********************************************************
 /* Content
 /*********************************************************/
 #content
 {
   padding-top:15px;
+}
+#user_avatar
+{
+  float:left;
+  margin-right:10px;
 }
 
 /**********************************************************
@@ -49,10 +66,14 @@ h1
   padding:5px 8px;
   background:#606060;
   color:white;
-  margin-top:-30px
+  margin-top:-50px
 }
-#questions div.question
+div.question
 {
-  padding:15px;
+  padding:15px 0;
   border-bottom:dotted 1px silver;
+}
+div.question a
+{
+  font-size:20px;
 }

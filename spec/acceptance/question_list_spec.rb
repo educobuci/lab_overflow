@@ -3,7 +3,11 @@ require 'capybara/rspec'
 
 feature "question list" do
   before do
-    @q = Question.new(:title => 'My question', :text => 'This is the question test!')
+    #@user = User.new(:name => 'Willy', :email => 'willyaa@gmail.com')
+    @user = Factory(:user)
+    @q = Question.new(:title => 'My question', :text => 'This is the question test!', :user => @user )    
+    #@q = Factory(:question)
+    
     @q.save
   end
   

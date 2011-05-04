@@ -14,6 +14,7 @@ class QuestionsController < ApplicationController
   
   def create
     @question = Question.new(params[:question])
+    @question.user = current_user
     respond_with @question do |format|
       if @question.save
         format.html { redirect_to root_url, :notice => "Success" }
