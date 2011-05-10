@@ -3,7 +3,7 @@ require 'capybara/rspec'
 
 feature "question resgistration" do
   scenario "regular" do
-    @user = User.create(:name => "Bob Marley", :email => "bob@example.com", :password => "123456")
+    @user = Factory.create(:user)
     sign_in_as @user
     visit '/'
     click_link 'Ask Question'
@@ -16,7 +16,7 @@ feature "question resgistration" do
     page.should have_content @user.name
   end
   scenario "error" do
-    @user = User.create(:name => "Bob Marley", :email => "bob@example.com", :password => "123456")
+    @user = Factory.create(:user)
     sign_in_as @user
     visit '/'
     click_link 'Ask Question'

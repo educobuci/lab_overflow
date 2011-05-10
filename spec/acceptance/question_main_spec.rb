@@ -3,9 +3,7 @@ require 'capybara/rspec'
 
 feature "question main" do
   before do
-    @user = Factory(:user)
-    @q = Question.new(:title => 'My question', :text => 'This is the question test!', :user => @user )
-    @q.save
+    @q = Factory.create(:question)
   end  
   
   scenario "regular apresentation" do

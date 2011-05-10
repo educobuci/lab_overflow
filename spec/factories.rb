@@ -4,9 +4,8 @@ Factory.define :user do |u|
   u.password '102030'
 end
 
-#Factory.define :question do |q|
-#  user = Factory(:user)
-#  q.title = 'My Question'
-#  q.text = 'This is the question test!'
- 
-#end
+Factory.define :question do |q|
+ q.title 'My question'
+ q.text 'This is the question test!'
+ q.association :user
+end
