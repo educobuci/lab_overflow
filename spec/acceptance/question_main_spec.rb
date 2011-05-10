@@ -13,6 +13,7 @@ feature "question main" do
     click_link 'My question'
     page.should have_content 'My question'
     page.should have_content 'This is the question test!'    
+    page.should have_content 'asked by John'        
   end
 
   scenario "return" do
