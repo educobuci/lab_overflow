@@ -4,6 +4,12 @@
   <%= @question.text %>
 </p>
 
+  <% if @question.is_edditable %>
+<p>
+    <%= link_to 'Edit Question', edit_question_path, :class => 'edit'  %>
+</p>
+  <% end %>
+
 <%= form_for [@question, @question.answers.build] do |a|%>
   <%= a.text_area :text %>
   <%= a.submit :value => 'Post your Answer' %>

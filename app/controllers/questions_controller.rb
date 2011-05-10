@@ -1,9 +1,14 @@
 class QuestionsController < ApplicationController
   respond_to :html
-  before_filter :auth, :only => [:new, :create]
+  before_filter :auth, :only => [:new, :create, :edit]
 
   def show
-    @question = Question.find(params[:id])  
+    @question = Question.find(params[:id])
+    
+    if current_user && current_user.id == @question.user.id
+        @question.is_edditable = true
+    end
+    
     respond_with @question
   end    
   
@@ -20,6 +25,20 @@ class QuestionsController < ApplicationController
         format.html { redirect_to root_url, :notice => "Success" }
       end
     end    
+  end
+  
+  def update
+    @question = Question.find(params[:id])
+    respond_with @question do |format|
+      if @question.update_attributes(params[:@question])
+        format.html { redirect_to root_url, :notice => "Success" }
+      end
+    end
+  end
+  
+  def edit
+    @question = Question.find(params[:id])
+    respond_with @question
   end
   
   private

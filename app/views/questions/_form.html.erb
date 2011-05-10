@@ -1,0 +1,19 @@
+<h2>Ask Question</h2>
+<% if @question.errors.any? %>
+<div id="error_explanation">
+  <h2><%= pluralize(@question.errors.count, "error") %> prohibited this post from being saved:</h2>
+  <ul>
+  <% @question.errors.full_messages.each do |msg| %>
+    <li><%= msg %></li>
+  <% end %>
+  </ul>
+</div>
+<% end %>
+<%= form_for @question do |f|%>
+  <dl>
+    <dt><%= f.label :title %></dt>
+    <dd><%= f.text_field :title %></dd>
+    <dd><%= f.text_area :text %></dd>
+  </dl>
+  <%= f.submit :value => 'Post your Question'  %>
+<% end %>
