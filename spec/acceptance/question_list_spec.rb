@@ -3,12 +3,7 @@ require 'capybara/rspec'
 
 feature "question list" do
   before do
-    #@user = User.new(:name => 'Willy', :email => 'willyaa@gmail.com')
-    @user = Factory(:user)
-    @q = Question.new(:title => 'My question', :text => 'This is the question test!', :user => @user )    
-    #@q = Factory(:question)
-    
-    @q.save
+    @q = Factory.create(:question)
   end
   
   scenario "listing the existing questions" do
