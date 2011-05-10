@@ -16,4 +16,10 @@ feature "question answer" do
     click_link_or_button 'Post your Answer'
     page.should have_content 'Success'
   end
+  
+  scenario "answer list for one question" do
+    Answer.new(:text => 'Answer for question 1', :question => @q).save
+    visit '/questions/1'
+    page.should have_content 'Answer for question 1' 
+  end  
 end
