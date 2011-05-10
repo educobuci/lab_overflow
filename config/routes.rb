@@ -1,4 +1,6 @@
 LabOverflow::Application.routes.draw do
+
+  devise_for :users
   resources :questions
   
   resources :answers

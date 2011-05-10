@@ -1,11 +1,6 @@
-<%= link_to 'Back', "/" %>
+<h2><%= @question.title %></h2>
 
 <p>
-  <b>Title:</b>
-  <%= @question.title %>
-</p>
-<p>
-  <b>Question:</b>
   <%= @question.text %>
 </p>
 
@@ -13,3 +8,5 @@
   <%= a.text_area :text %>
   <%= a.submit :value => 'Post your Answer' %>
 <% end %>
+
+<%= link_to 'Back', "/" %>

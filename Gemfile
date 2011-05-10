@@ -2,12 +2,15 @@ source 'http://rubygems.org'
 
 gem 'rails', '3.0.5'
 gem 'sqlite3'
+gem 'devise'
+gem 'jquery-rails'
 
 group :development, :test do
   gem 'rspec-rails'
   gem 'capybara', :git => 'https://github.com/jnicklas/capybara.git'
   gem 'autotest'
   gem 'ZenTest'
+  gem 'factory_girl_rails'
 end
 
 # Use unicorn as the web server

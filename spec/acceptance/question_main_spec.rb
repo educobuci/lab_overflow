@@ -3,7 +3,8 @@ require 'capybara/rspec'
 
 feature "question main" do
   before do
-    @q = Question.new(:title => 'My question', :text => 'This is the question test!')
+    @user = Factory(:user)
+    @q = Question.new(:title => 'My question', :text => 'This is the question test!', :user => @user )
     @q.save
   end  
   
@@ -20,7 +21,7 @@ feature "question main" do
     page.should have_content 'My question'
     page.should have_content 'This is the question test!'  
     click_link 'Back'
-    page.should have_content 'LabOverFlow'
+    page.should have_content 'Questions'
   end
 
 end

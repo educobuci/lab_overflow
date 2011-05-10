@@ -25,3 +25,14 @@ RSpec.configure do |config|
   # instead of true.
   config.use_transactional_fixtures = true
 end
+
+def sign_in_as(user)
+  visit '/'
+  click_link 'sign in'
+  within '#user_new' do
+    fill_in 'Email', :with => user.email
+    fill_in 'Password', :with => user.password
+  end
+    
+  click_link_or_button 'Sign in'
+end
