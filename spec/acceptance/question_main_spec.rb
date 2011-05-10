@@ -10,7 +10,8 @@ feature "question main" do
     visit '/'
     click_link 'My question'
     page.should have_content 'My question'
-    page.should have_content 'This is the question test!'
+    page.should have_content 'This is the question test!'  
+    page.should have_content 'asked by John'        
   end
 
   scenario "return" do
@@ -23,7 +24,7 @@ feature "question main" do
   end
   
   scenario "question edit" do
-    sign_in_as @user
+    sign_in_as @q.user
     visit '/questions/1'
     click_link_or_button 'Edit Question'
     within '.edit_question' do
@@ -32,7 +33,7 @@ feature "question main" do
     end
     click_link_or_button 'Post your Question'
     page.should have_content 'Success'
-    page.should have_content @user.name
+    page.should have_content @q.user.name
   end
 
 end

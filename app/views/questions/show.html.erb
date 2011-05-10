@@ -1,16 +1,36 @@
-<h2><%= @question.title %></h2>
+<div style="border-bottom:1px solid #666; height:34px; clear:both" >
+  <h2><%= @question.title %></h2>
+</div>
 
 <p>
   <%= @question.text %>
 </p>
 
-  <% if @question.is_edditable %>
+
+<% if @question.is_edditable %>
 <p>
     <%= link_to 'Edit Question', edit_question_path, :class => 'edit'  %>
 </p>
-  <% end %>
+<% end %>
+
+<p>asked by <%= @question.user.name%></p>
+
+<br/>
+
+<div style="border-bottom:1px solid #666; height:34px; clear:both" >
+  <h2> Answers </h2>
+</div>
+
+<% @question.answers.each do |a| %>
+<div style="border-bottom:1px solid #aaa; height:34px; clear:both" >
+  <p> <%= a.text %> </p>
+</div>
+<% end %>
+
+<br/>
 
 <%= form_for [@question, @question.answers.build] do |a|%>
+  <h2>Your Answer </h2>
   <%= a.text_area :text %>
   <%= a.submit :value => 'Post your Answer' %>
 <% end %>
