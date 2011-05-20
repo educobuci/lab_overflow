@@ -24,6 +24,7 @@
 <% @question.answers.each do |a| %>
 <div style="border-bottom:1px solid #aaa; height:34px; clear:both" >
   <p> <%= a.text %> </p>
+  <p>answered by <%= a.user.name%></p>  
 </div>
 <% end %>
 
