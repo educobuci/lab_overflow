@@ -28,7 +28,6 @@ feature "question main" do
     visit '/questions/1'
     click_link_or_button 'Edit Question'
     within '.edit_question' do
-      fill_in 'Title', :with => 'My question edit'
       fill_in 'question_text', :with => 'This is my edition!'
     end
     click_link_or_button 'Post your Question'

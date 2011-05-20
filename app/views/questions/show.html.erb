@@ -1,39 +1,39 @@
-<div style="border-bottom:1px solid #666; height:34px; clear:both" >
-  <h2><%= @question.title %></h2>
+<div id="question" >
+  <div class="details">
+    <h2><%= @question.title %></h2>
+    <p><%= @question.text %></p>
+
+    <div class="question_menu">
+    <% if @question.is_edditable %>
+      <%= link_to 'Edit Question', edit_question_path, :class => 'edit'  %>
+    <% end %>
+    </div>
+
+    <div class="owner">
+      <span>asked by <%= @question.user.name%></span>
+    </div>
+  </div>
+  
+  <% if @question.answers.any? %>
+  <div id="answers">
+    <h3>Answers</h3>
+    <% @question.answers.each do |a| %>
+    <div class="answer" >
+      <p><%= a.text %> </p>
+      <p>answered by <%= a.user.name%></p> 
+    </div>
+    <% end %>
+  </div>
+  <% end %>
+  
+  <div id="answer_form">
+    <%= form_for [@question, @question.answers.build] do |a|%>
+      <%= a.text_area :text %>
+      <div class="form_buttons">
+        <%= a.submit :value => 'Post your Answer' %>
+      </div>
+    <% end %>  
+  </div>
+
+  <%= link_to 'Back', "/" %>
 </div>
-
-<p>
-  <%= @question.text %>
-</p>
-
-
-<% if @question.is_edditable %>
-<p>
-    <%= link_to 'Edit Question', edit_question_path, :class => 'edit'  %>
-</p>
-<% end %>
-
-<p>asked by <%= @question.user.name%></p>
-
-<br/>
-
-<div style="border-bottom:1px solid #666; height:34px; clear:both" >
-  <h2> Answers </h2>
-</div>
-
-<% @question.answers.each do |a| %>
-<div style="border-bottom:1px solid #aaa; height:34px; clear:both" >
-  <p> <%= a.text %> </p>
-  <p>answered by <%= a.user.name%></p>  
-</div>
-<% end %>
-
-<br/>
-
-<%= form_for [@question, @question.answers.build] do |a|%>
-  <h2>Your Answer </h2>
-  <%= a.text_area :text %>
-  <%= a.submit :value => 'Post your Answer' %>
-<% end %>
-
-<%= link_to 'Back', "/" %>
