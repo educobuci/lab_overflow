@@ -4,6 +4,7 @@ require 'capybara/rspec'
 feature "question answer" do
   before do
     @q = Factory.create(:question)    
+    @answer_user = Factory.create(:user_jack)
   end      
   
   scenario "answer without login" do
@@ -16,8 +17,8 @@ feature "question answer" do
   end   
   
   scenario "regular answer" do
-    @u = Factory.create(:user_jack)    
-    sign_in_as @u    
+    
+    sign_in_as @answer_user    
     visit '/questions/1'
     within '#new_answer' do
       fill_in 'answer_text', :with => 'This is the answer test!'
@@ -27,10 +28,18 @@ feature "question answer" do
   end
   
   scenario "answer list for one question" do
-    @u = Factory.create(:user_jack)
-    Answer.new(:text => 'Answer for question 1', :question => @q, :user => @u).save
+    Answer.new(:text => 'Answer for question 1', :question => @q, :user => @answer_user).save
     visit '/questions/1'
     page.should have_content 'Answer for question 1' 
     page.should have_content 'answered by Jack' 
   end   
+  
+  scenario "answere accepted" do
+    
+    Answer.new(:text => 'Answer for question 1', :question => @q, :user => @answer_user).save
+    sign_in_as @q.user
+    visit '/questions/1'
+    check('accept')
+    
+  end
 end
