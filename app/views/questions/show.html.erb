@@ -19,6 +19,7 @@
     <h3>Answers</h3>
     <% @question.answers.each do |a| %>
     <div class="answer" >
+		<p><input type=checkbox name=accept />
       <p><%= a.text %> </p>
       <p>answered by <%= a.user.name%></p> 
     </div>

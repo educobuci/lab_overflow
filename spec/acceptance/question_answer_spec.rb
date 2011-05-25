@@ -34,12 +34,15 @@ feature "question answer" do
     page.should have_content 'answered by Jack' 
   end   
   
-  scenario "answere accepted" do
+  scenario "answere accepted continue accepted" do
     
     Answer.new(:text => 'Answer for question 1', :question => @q, :user => @answer_user).save
     sign_in_as @q.user
     visit '/questions/1'
     check('accept')
-    
+    visit '/'
+    visit '/questions/1'
+    assert_equal true, field_labeled('accept')['checked'] 
   end
+   
 end
