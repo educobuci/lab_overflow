@@ -5,6 +5,8 @@ LabOverflow::Application.routes.draw do
   
   resources :answers
   
+  match 'answers/:id/check', :controller =>'answers', :action => 'check'
+  
   root :to => "home#index"
     
   resources :questions do

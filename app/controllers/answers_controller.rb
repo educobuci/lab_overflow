@@ -16,6 +16,13 @@ class AnswersController < ApplicationController
     redirect_to question_path(@question), :notice => "Success"  
   end  
   
+  def check
+    @answer = Answer.find(params[:id])
+    check = !@answer.checked
+    @answer.update_attributes(:checked => check )
+    render :text=>@answer.checked
+  end
+  
   private
   def auth
     unless user_signed_in?
