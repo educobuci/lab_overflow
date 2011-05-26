@@ -19,7 +19,8 @@
     <h3>Answers</h3>
     <% @question.answers.each do |a| %>
     <div class="answer" >
-		<%= check_box_tag 'accept'%>		
+		<%= check_box_tag 'accept', 'accepted', a.checked, :onchange => remote_function(
+      :url => { :action => :check, :controller => :answers } )%>		
       <p><%= a.text %> </p>
       <p>answered by <%= a.user.name%></p> 
     </div>
