@@ -9,11 +9,18 @@ class AnswersController < ApplicationController
   
   def create
     @question = Question.find(params[:question_id])
-    new_answer = Answer.new(params[:answer])
-    new_answer.question = @question
-    new_answer.user = current_user
-    @answer = @question.answers.create(new_answer.attributes)
-    redirect_to question_path(@question), :notice => "Success"  
+    
+    @new_answer = Answer.new(params[:answer])
+    @new_answer.question = @question
+    @new_answer.user = current_user
+    
+    respond_with @new_answer do |f|
+      if @new_answer.save
+        f.html { redirect_to question_path(@question), :notice => "Success" }
+      else
+        f.html { redirect_to question_path(@question), :alert => "Error" }
+      end
+    end      
   end  
   
   private
