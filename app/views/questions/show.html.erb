@@ -20,6 +20,7 @@
     <% @question.answers.each do |a| %>
     <div class="answer" >
       <p><%= a.text %> </p>
+      <p>answered by <%= a.user.name%></p> 
     </div>
     <% end %>
   </div>

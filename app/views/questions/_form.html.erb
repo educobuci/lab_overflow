@@ -12,7 +12,9 @@
 <%= form_for @question do |f|%>
   <dl>
     <dt><%= f.label :title %></dt>
-    <dd><%= f.text_field :title %></dd>
+    <dd>
+      <%= if @question.is_edditable then @question.title else f.text_field :title end %>
+    </dd>
     <dd><%= f.text_area :text %></dd>
   </dl>
   <%= f.submit :value => 'Post your Question'  %>
