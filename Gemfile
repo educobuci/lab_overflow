@@ -11,6 +11,7 @@ group :development, :test do
   gem 'autotest'
   gem 'ZenTest'
   gem 'factory_girl_rails'
+  gem 'jasmine'
 end
 
 # Use unicorn as the web server

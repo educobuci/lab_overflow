@@ -11,7 +11,7 @@ Factory.define :user_jack, :class => User do |u|
 end
 
 Factory.define :question do |q|
- q.title 'My question'
- q.text 'This is the question test!'
- q.association :user
+  q.title 'My question'
+  q.text 'This is the question test!'
+  q.association :user
 end
