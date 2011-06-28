@@ -1,9 +1,12 @@
 LabOverflow::Application.routes.draw do
 
+  get "search/index"
+
   devise_for :users
-  resources :questions
-  
+  resources :questions  
   resources :answers
+  
+  match 'search' => 'search#index', :as => :search
   
   root :to => "home#index"
     

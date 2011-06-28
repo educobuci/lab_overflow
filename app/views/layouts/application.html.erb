@@ -17,6 +17,12 @@
         <div id="alert"><%= flash[:alert] %></div>
       <% end %>
     </div>
+    <div id="search">
+      <%= form_tag search_url do %>
+        <input type="text" name="search_box" id="search_box" class="search_box"/>
+        <%= submit_tag 'search' %>
+      <% end %>
+    </div>    
     <div id="header">
       <a href="/"><h1>LabOverflow</h1></a>
     </div>
