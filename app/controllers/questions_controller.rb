@@ -50,9 +50,10 @@ class QuestionsController < ApplicationController
   def accept
     @question = Question.find(params[:id])
     
-    @question.answer_id = params[:answer_id]
-    @question.save
-    
+    if(@question.user == current_user) then
+      @question.answer_id = params[:answer_id]
+      @question.save
+    end
     respond_with @question
   end
   
