@@ -2,14 +2,16 @@ LabOverflow::Application.routes.draw do
 
   devise_for :users
   resources :questions
-  
   resources :answers
   
-  match 'answers/:id/check', :controller =>'answers', :action => 'check'
+  # match 'questions/:id/accept', :controller =>'questions', :action => 'accept'
   
   root :to => "home#index"
     
   resources :questions do
+    member do
+      get 'accept';
+    end
     resources :answers 
   end
   

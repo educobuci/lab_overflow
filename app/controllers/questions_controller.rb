@@ -1,5 +1,5 @@
 class QuestionsController < ApplicationController
-  respond_to :html
+  respond_to :html, :json
   before_filter :auth, :only => [:new, :create, :edit]
 
   def show
@@ -44,6 +44,15 @@ class QuestionsController < ApplicationController
     if current_user && current_user.id == @question.user.id
         @question.is_edditable = true
     end
+    respond_with @question
+  end
+  
+  def accept
+    @question = Question.find(params[:id])
+    
+    @question.answer_id = params[:answer_id]
+    @question.save
+    
     respond_with @question
   end
   

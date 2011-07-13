@@ -1,5 +1,5 @@
 class AnswersController < ApplicationController
-  respond_to :html
+  respond_to :html, :json
   before_filter :auth, :only => :create
   
   def new
@@ -15,13 +15,6 @@ class AnswersController < ApplicationController
     @answer = @question.answers.create(new_answer.attributes)
     redirect_to question_path(@question), :notice => "Success"  
   end  
-  
-  def check
-    @answer = Answer.find(params[:id])
-    check = !@answer.checked
-    @answer.update_attributes(:checked => check )
-    render :text=>@answer.checked
-  end
   
   private
   def auth
