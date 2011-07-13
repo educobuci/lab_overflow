@@ -12,6 +12,7 @@ group :development, :test do
   gem 'ZenTest'
   gem 'factory_girl_rails'
   gem 'jasmine'
+  gem 'database_cleaner'
 end
 
 # Use unicorn as the web server

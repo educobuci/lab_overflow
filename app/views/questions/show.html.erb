@@ -1,5 +1,5 @@
 <div id="question" >
-  <div class="details">
+  <div class="details" data-id="<%= @question.id %>">
     <h2><%= @question.title %></h2>
     <p><%= @question.text %></p>
 
@@ -19,6 +19,9 @@
     <h3>Answers</h3>
     <% @question.answers.each do |a| %>
     <div class="answer" >
+		<% if @question.is_edditable%>
+			<input id="accept" class="accept" type="checkbox" value="<%=a.id%>" name="accept"/>  
+      <% end %>		
       <p><%= a.text %> </p>
       <p>answered by <%= a.user.name%></p> 
     </div>

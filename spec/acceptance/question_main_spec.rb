@@ -2,7 +2,7 @@ require 'spec_helper'
 require 'capybara/rspec'
 
 feature "question main" do
-  before do
+  before (:each)do
     @q = Factory.create(:question)
   end  
   
@@ -25,7 +25,7 @@ feature "question main" do
   
   scenario "question edit" do
     sign_in_as @q.user
-    visit '/questions/1'
+    visit '/questions/'+@q.id.to_s
     click_link_or_button 'Edit Question'
     within '.edit_question' do
       fill_in 'question_text', :with => 'This is my edition!'

@@ -1,5 +1,5 @@
 class AnswersController < ApplicationController
-  respond_to :html
+  respond_to :html, :json
   before_filter :auth, :only => :create
   
   def new
