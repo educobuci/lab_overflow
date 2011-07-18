@@ -19,8 +19,10 @@
     <h3>Answers</h3>
     <% @question.answers.each do |a| %>
     <div class="answer" >
-		<% if @question.is_edditable%>
-			<input id="accept" class="accept" type="checkbox" value="<%=a.id%>" name="accept"/>  
+		<% if @question.is_edditable
+			selected = @question.answer_id == a.id
+		%>
+			<%= check_box_tag 'accept', a.id, selected, :class=> "accept"%>  
       <% end %>		
       <p><%= a.text %> </p>
       <p>answered by <%= a.user.name%></p> 
